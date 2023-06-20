@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <!-- 从互联网引入vue2 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 导航栏 -->
+        <nav class="navbar navbar-default bg-dark" role="navigation">
+
+            <div class="container">
+                <!-- 小屏 -->
+                <div class="navigation navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="./images/logo.png" alt="logo"
+                            class="navbar-logo"></a>
+                </div>
+
+                <!-- 大屏 -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#">华语</a></li>
+                        <li><a href="#">日韩</a></li>
+                        <li><a href="#">欧美</a></li>
+                        <li><a href="#">Remix</a></li>
+                        <li><a href="#">纯音乐</a></li>
+                        <li><a href="#">异次元</a></li>
+                        <li><a href="#">特供</a></li>
+                        <li><a href="#">茶馆</a></li>
+                        <li><a href="#">百科</a></li>
+                        <li><a href="#">充值</a></li>
+                        <li><a href="#">站务</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="login.html">登陆</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </nav>
+
+        <!-- login -->
+        <div class="login flexbox">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">登陆</div>
+                    <div class="panel-body">
+                        <!-- 用户名 -->
+                        <div class="input-group" style="margin-bottom: 15px;">
+                            <span class="input-group-addon" id="sizing-addon2"><i class="bi bi-person-fill"></i></span>
+                            <input id="username" type="text" class="form-control" id="username" placeholder="用户名"
+                                aria-describedby="sizing-addon2" value="">
+                        </div>
+                        <!-- 密码 -->
+                        <div class="input-group" style="margin-bottom: 15px;">
+                            <span class="input-group-addon" id="sizing-addon2"><i class="bi bi-lock-fill"></i></span>
+                            <input id="password" type="text" class="form-control" id="password" placeholder="密码"
+                                aria-describedby="sizing-addon2">
+                        </div>
+
+                        <button @click="login" id="button" type="submit" class="button btn btn-primary"
+                            style="margin-bottom: 15px;">登陆</button>
+
+                        <a href="signin.html">
+                            <div class="signin">注册</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="./js/jQuery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/login.js"></script>
+<script>
+    //获取登陆按钮
+    var button = document.getElementById('button');
+    // 为登陆按钮添加点击事件
+    // button.onclick = function () {
+    //     // 从localStorage中读取JSON字符串
+    //     var userJSON = localStorage.getItem('user');
+
+    //     // 将JSON字符串转换为user对象
+    //     var user = JSON.parse(userJSON);
+
+    //     // 访问user对象的属性
+    //     var lco_username = user.username;
+    //     var lco_password = user.password;
+
+    //     // 获取用户名和密码
+    //     var username = document.getElementById('username');
+    //     var password = document.getElementById('password');
+
+    //     // 判定条件
+    //     if (lco_password == password.value && lco_username == username.value) {
+    //         // 登录验证成功后获取一个令牌或标识符
+    //         var token = 'abc123';
+
+    //         // 将令牌保存到localStorage中
+    //         localStorage.setItem('token', token);
+
+    //         alert('登陆成功');
+    //         window.location.href = 'index.html';
+    //     }
+    //     else {
+    //         alert('密码错误');
+    //     }
+    //     // 回车登陆
+    //     document.addEventListener('keydown', function (event) {
+    //         if (event.keyCode == 13) {
+    //             button.click();
+    //         }
+    //     })
+    // }
+
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        methods: {
+            login: function () {
+                // 从localStorage中读取JSON字符串
+                var userJSON = localStorage.getItem('user');
+
+                // 将JSON字符串转换为user对象
+                var user = JSON.parse(userJSON);
+
+                // 访问user对象的属性
+                var lco_username = user.username;
+                var lco_password = user.password;
+
+                // 获取用户名和密码
+                var username = document.getElementById('username');
+                var password = document.getElementById('password');
+
+                // 判定条件
+                if (lco_password == password.value && lco_username == username.value) {
+                    // 登录验证成功后获取一个令牌或标识符
+                    var token = 'abc123';
+
+                    // 将令牌保存到localStorage中
+                    localStorage.setItem('token', token);
+
+                    alert('登陆成功');
+                    window.location.href = 'index.html';
+                }
+                else {
+                    alert('密码错误');
+                }
+            },
+        },
+    });
+</script>
+
+</html>

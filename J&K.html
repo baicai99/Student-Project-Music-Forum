@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华语</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/chinese.css">
+    <!-- 从互联网引入vue2 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 导航栏 -->
+        <nav class="navbar navbar-default bg-dark" role="navigation">
+
+            <div class="container">
+                <!-- 小屏 -->
+                <div class="navigation navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="./images/logo.png" alt="logo"
+                            class="navbar-logo"></a>
+                </div>
+
+                <!-- 大屏 -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="chinese.html">华语</a></li>
+                        <li class="active"><a href="J&K.html">日韩</a></li>
+                        <li><a href="#">欧美</a></li>
+                        <li><a href="#">Remix</a></li>
+                        <li><a href="#">纯音乐</a></li>
+                        <li><a href="#">异次元</a></li>
+                        <li><a href="#">特供</a></li>
+                        <li><a href="#">茶馆</a></li>
+                        <li><a href="#">百科</a></li>
+                        <li><a href="#">充值</a></li>
+                        <li><a href="#">站务</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><i class="bi bi-bell-fill"></i>消息</a></li>
+                        <li><a href="login.html">登陆</a></li>
+                        <li id="exit"><a href="#"><i class="bi bi-box-arrow-right"></i>退出</a></li>
+                        <script>
+                            var exit = document.querySelector('#exit')
+
+                            exit.onclick = function () {
+                                alert('请先登录')
+                            }
+                        </script>
+                    </ul>
+                </div>
+            </div>
+
+
+        </nav>
+
+        <!-- 内容 -->
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <ol class="breadcrumb">
+                                <li><a href="index.html"><i class="bi bi-house-fill"></i></a></li>
+                                <li><a href="chinese.html">日韩</a></li>
+                            </ol>
+                        </div>
+                        <title-item v-for="(title, index) in titles" :key="index" :text="title"></title-item>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" class="post btn btn-primary">发帖</button>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button id="sign" type="button" class="post btn btn-primary">签到</button>
+                        </div>
+                        <script>
+                            var sign = document.querySelector('#sign');
+
+                            sign.onclick = function () {
+                                this.innerHTML = '已签到'
+                                alert('签到成功')
+                            }
+                        </script>
+
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">关于我们</div>
+                                <div class="panel-body">
+                                    LoveHiFi 是一个由音乐爱好者维护的分享平台, 旨在解决问题互帮互助, 如果您有需求, 请注册账号并发布信息、详细描述歌曲信息等, 我们会尽力帮您寻找
+                                    LoveHiFi MUSIC BBS - LoveHiFi.COM
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="flexbox container">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">...</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+    </div>
+</body>
+
+<script src="./js/jQuery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script>
+    // 定义标题组件
+    Vue.component('title-item', {
+        props: ['text'],
+        template: `
+    <div class="panel-body">
+        <div class="items flexboxonly">
+            <div class="items-head">
+                </div>
+                <a href="info.html">
+                    <div class="tittle">{{ text }}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+  `
+    });
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            titles: [
+                '张学友《只想一生跟你走》[FLAC / MP3 - 320K]',
+                '南征北战NZBZ《最美的期待》[FLAC/MP3-320K]',
+                '周杰伦《2000-2022专辑合集》[FLAC/MP3-320K]',
+                '[专辑合集]SEVENTEEN-音源合集[MP3-320K]',
+                '林志炫《烟花易冷(Live)》[FLAC/MP3-320K]'
+            ]
+        }
+    });
+</script>
+
+</html>

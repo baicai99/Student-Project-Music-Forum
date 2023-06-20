@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoveHiFi</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- 导航栏 -->
+        <nav class="navbar navbar-default bg-dark" role="navigation">
+
+            <div class="container">
+                <!-- 小屏 -->
+                <div class="navigation navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="./images/logo.png" alt="logo"
+                            class="navbar-logo"></a>
+                </div>
+
+                <!-- 大屏 -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">首页</a></li>
+                        <li><a href="chinese.html">华语</a></li>
+                        <li><a href="J&K.html">日韩</a></li>
+                        <li><a href="#">欧美</a></li>
+                        <li><a href="#">Remix</a></li>
+                        <li><a href="#">纯音乐</a></li>
+                        <li><a href="#">异次元</a></li>
+                        <li><a href="#">特供</a></li>
+                        <li><a href="#">茶馆</a></li>
+                        <li><a href="#">百科</a></li>
+                        <li><a href="#">充值</a></li>
+                        <li><a href="#">站务</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><i class="bi bi-bell-fill"></i>消息</a></li>
+                        <li id="login"><a href="login.html">登陆</a></li>
+                        <li @click="exit"><a href="#"><i class="bi bi-box-arrow-right"></i>退出</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </nav>
+
+        <!-- 内容 -->
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <ul class="nav nav-pills">
+                                <li role="presentation" class="active"><a href="#">最新</a></li>
+                                <li role="presentation"><a href="#">热门</a></li>
+                                <li role="presentation"><a href="#">月榜</a></li>
+                                <li role="presentation"><a href="#">周榜</a></li>
+                                <li role="presentation"><a href="#">日榜</a></li>
+                            </ul>
+                        </div>
+                        <!-- 每日热歌 -->
+                        <title-item v-for="(title, index) in titles" :key="index" :text="title"></title-item>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+
+                        <a href="post.html">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <button type="button" class="post btn btn-primary">发帖</button>
+                            </div>
+                        </a>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button id="sign" type="button" class="post btn btn-primary">签到</button>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">关于我们</div>
+                                <div class="panel-body">
+                                    LoveHiFi 是一个由音乐爱好者维护的分享平台, 旨在解决问题互帮互助, 如果您有需求, 请注册账号并发布信息、详细描述歌曲信息等, 我们会尽力帮您寻找
+                                    LoveHiFi MUSIC BBS - LoveHiFi.COM
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="flexbox container">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">...</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</body>
+
+<script src="./js/jQuery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/index.js"></script>
+<script>
+    // 获取id：sign
+    var sign = document.querySelector('#sign');
+    // 检查是否存在登录状态的标识符或令牌
+    var token = localStorage.getItem('token');
+
+    if (token) {
+        // 用户已登录
+        console.log('User is logged in');
+
+        // 从localStorage中读取JSON字符串
+        var userJSON = localStorage.getItem('user');
+
+        // 将JSON字符串转换为user对象
+        var user = JSON.parse(userJSON);
+
+        // 访问user对象的属性
+        var lco_username = user.username;
+
+        // 获取id：login
+        var login = document.getElementById('login');
+        login.innerHTML = '<a href="#">' + lco_username + '</a>'
+
+        sign.onclick = function () {
+            this.innerHTML = '已签到'
+            alert('签到成功')
+        }
+
+    } else {
+        // 用户未登录
+        console.log('User is not logged in');
+        sign.onclick = function () {
+            alert('请先登陆')
+            window.location.href = 'login.html';
+        }
+    }
+</script>
+<script>
+    // 定义标题组件
+    Vue.component('title-item', {
+        props: ['text'],
+        template: `
+    <div class="panel-body">
+        <div class="items flexboxonly">
+            <div class="items-head">
+                </div>
+                <a href="info.html">
+                    <div class="tittle">{{ text }}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+  `
+    });
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            titles: [
+                '张学友《只想一生跟你走》[FLAC / MP3 - 320K]',
+                '南征北战NZBZ《最美的期待》[FLAC/MP3-320K]',
+                '周杰伦《2000-2022专辑合集》[FLAC/MP3-320K]',
+                '[专辑合集]SEVENTEEN-音源合集[MP3-320K]',
+                '林志炫《烟花易冷(Live)》[FLAC/MP3-320K]'
+            ]
+        },
+        methods: {
+            exit: function () {
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                alert('退出成功，资料仅存本地，请重新注册')
+                window.location.reload();
+            }
+        },
+    });
+</script>
+
+</html>
