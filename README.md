@@ -8,4 +8,3 @@ A music forum made by myself, based on bootstrap. Responsive layout.
 ![screencapture-file-Users-zhengjiyuan-Documents-index-html-2023-06-18-00_48_42](https://github.com/baicai99/Student-Project---Music-Forum/assets/101706274/48d6ac35-f572-4e10-b1b7-e6f354385799)
 
 # vue-music-from
-# vue-music-from
