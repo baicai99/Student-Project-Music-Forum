@@ -1,7 +1,7 @@
 # 音乐论坛/Music-Forum
 * 2023.6.21:git好难用啊，不小心输入错了的命令行，导致一堆文件混乱，回滚也失败了，直接吐血了。总之就是不小心覆盖了文件之类的，搞了几个小时。
 # 中文
-一个自己图一乐做的音乐论坛，基于bootstrap制作的。响应式布局。
+一个自己图一乐做的音乐论坛，基于bootstrap制作的。响应式布局。为了避免版权纠纷，所有图片都采用了[picsum](https://picsum.photos/)的开源图片作为填充替代。
 # Englsh
 A music forum made by myself, based on bootstrap. Responsive layout.
 # 示例图
